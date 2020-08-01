@@ -1,0 +1,47 @@
+{
+    "name": "vjik/yii2-psr-container-proxy",
+    "description": "PSR-11 compatible container proxy for Yii2",
+    "version": "1.0.0",
+    "type": "library",
+    "keywords": [
+        "yii2",
+        "extension",
+        "psr",
+        "psr-11",
+        "container"
+    ],
+    "authors": [
+        {
+            "name": "Sergei Predvoditelev",
+            "email": "sergey.predvoditelev@gmail.com"
+        }
+    ],
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/vjik/yii2-psr-container-proxy/issues",
+        "source": "https://github.com/vjik/yii2-psr-container-proxy"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "psr/container": "^1.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Vjik\\Yii2\\Psr\\ContainerProxy\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vjik\\Yii2\\Psr\\ContainerProxyTests\\": "tests"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
