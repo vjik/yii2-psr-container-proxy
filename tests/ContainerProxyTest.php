@@ -3,6 +3,8 @@
 namespace Vjik\Yii2\Psr\ContainerProxyTests;
 
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Vjik\Yii2\Psr\ContainerProxy\ContainerProxy;
 use Vjik\Yii2\Psr\ContainerProxy\InvalidConfigException;
 use Vjik\Yii2\Psr\ContainerProxy\NotFoundException;
@@ -27,6 +29,7 @@ class ContainerProxyTest extends TestCase
         $container = new Container();
         $proxy = new ContainerProxy($container);
 
+        $this->expectException(NotFoundExceptionInterface::class);
         $this->expectException(NotFoundException::class);
         $proxy->get('NotFound');
     }
@@ -37,6 +40,7 @@ class ContainerProxyTest extends TestCase
         $container->set(ColorInterface::class, ['class' => AbstractColor::class]);
         $proxy = new ContainerProxy($container);
 
+        $this->expectException(ContainerExceptionInterface::class);
         $this->expectException(NotInstantiableException::class);
         $proxy->get(ColorInterface::class);
     }
@@ -47,6 +51,7 @@ class ContainerProxyTest extends TestCase
         $container->set(ColorInterface::class, 'NotFound');
         $proxy = new ContainerProxy($container);
 
+        $this->expectException(ContainerExceptionInterface::class);
         $this->expectException(InvalidConfigException::class);
         $proxy->get(ColorInterface::class);
     }
