@@ -6,15 +6,13 @@ use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Vjik\Yii2\Psr\ContainerProxy\ContainerProxy;
-use Vjik\Yii2\Psr\ContainerProxy\InvalidConfigException;
 use Vjik\Yii2\Psr\ContainerProxy\NotFoundException;
 use Vjik\Yii2\Psr\ContainerProxy\NotInstantiableException;
 use yii\di\Container;
 
-class ContainerProxyTest extends TestCase
+final class ContainerProxyTest extends TestCase
 {
-
-    public function testValid()
+    public function testValid(): void
     {
         $container = new Container();
         $container->set(ColorInterface::class, RedColor::class);
@@ -24,7 +22,7 @@ class ContainerProxyTest extends TestCase
         $this->assertInstanceOf(RedColor::class, $color);
     }
 
-    public function testNotFoundException()
+    public function testNotFoundException(): void
     {
         $container = new Container();
         $proxy = new ContainerProxy($container);
@@ -34,7 +32,7 @@ class ContainerProxyTest extends TestCase
         $proxy->get('NotFound');
     }
 
-    public function testNotInstantiableException()
+    public function testNotInstantiableException(): void
     {
         $container = new Container();
         $container->set(ColorInterface::class, ['class' => AbstractColor::class]);
@@ -45,18 +43,7 @@ class ContainerProxyTest extends TestCase
         $proxy->get(ColorInterface::class);
     }
 
-    public function testInvalidConfigException()
-    {
-        $container = new Container();
-        $container->set(ColorInterface::class, 'NotFound');
-        $proxy = new ContainerProxy($container);
-
-        $this->expectException(ContainerExceptionInterface::class);
-        $this->expectException(InvalidConfigException::class);
-        $proxy->get(ColorInterface::class);
-    }
-
-    public function testHasSingleton()
+    public function testHasSingleton(): void
     {
         $container = new Container();
         $container->setSingleton(ColorInterface::class, RedColor::class);
@@ -65,7 +52,7 @@ class ContainerProxyTest extends TestCase
         $this->assertTrue($proxy->has(ColorInterface::class));
     }
 
-    public function testHasDefinition()
+    public function testHasDefinition(): void
     {
         $container = new Container();
         $container->set(ColorInterface::class, RedColor::class);
@@ -74,7 +61,7 @@ class ContainerProxyTest extends TestCase
         $this->assertTrue($proxy->has(ColorInterface::class));
     }
 
-    public function testHasClass()
+    public function testHasClass(): void
     {
         $container = new Container();
         $proxy = new ContainerProxy($container);
@@ -82,7 +69,7 @@ class ContainerProxyTest extends TestCase
         $this->assertTrue($proxy->has(RedColor::class));
     }
 
-    public function testHasNotFound()
+    public function testHasNotFound(): void
     {
         $container = new Container();
         $proxy = new ContainerProxy($container);

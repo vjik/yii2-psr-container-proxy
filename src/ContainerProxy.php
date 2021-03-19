@@ -8,9 +8,10 @@ use yii\di\Container;
 use yii\di\Instance;
 use yii\di\NotInstantiableException as Yii2NotInstantiableException;
 
+use function is_string;
+
 class ContainerProxy implements ContainerInterface
 {
-
     private $container;
 
     public function __construct(Container $container)
@@ -26,7 +27,9 @@ class ContainerProxy implements ContainerInterface
      * they appear in the constructor declaration. If you want to skip some parameters, you should index the remaining
      * ones with the integers that represent their positions in the constructor parameter list.
      * @param array $config a list of name-value pairs that will be used to initialize the object properties.
+     *
      * @return object An instance of the requested interface.
+     *
      * @throws InvalidConfigException
      * @throws NotInstantiableException
      * @throws NotFoundException
@@ -48,7 +51,9 @@ class ContainerProxy implements ContainerInterface
 
     /**
      * Returns a value indicating whether the container has the definition of the specified name.
+     *
      * @param string $id class name, interface name or alias name
+     *
      * @return bool whether the container is able to provide instance of class specified
      */
     public function has($id)

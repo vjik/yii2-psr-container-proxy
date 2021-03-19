@@ -23,7 +23,8 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "yiisoft/yii2": "~2.0.0",
+        "php": "^7.2",
+        "yiisoft/yii2": "~2.0.40",
         "psr/container": "^1.0"
     },
     "require-dev": {
