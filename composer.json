@@ -1,7 +1,6 @@
 {
     "name": "vjik/yii2-psr-container-proxy",
     "description": "PSR-11 compatible container proxy for Yii2",
-    "version": "1.0.0",
     "type": "library",
     "keywords": [
         "yii2",
