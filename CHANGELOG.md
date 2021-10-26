@@ -1,6 +1,6 @@
 # Yii 2 Container Proxy (PSR-11) Change Log
 
-## 2.0.1 — under development
+## 2.0.1 — 26.10.2021
 
 Add support PHP `^8.0`. 
 
