@@ -6,11 +6,7 @@ filter:
     - "src/*"
 
 build:
-  environment:
-    php:
-      version: 8.0.11
-      ini:
-        "xdebug.mode": coverage
+  image: default-bionic
 
   nodes:
     analysis:
@@ -19,6 +15,12 @@ build:
           - php-scrutinizer-run
 
     phpunit:
+      environment:
+        php:
+          version: 8.0.11
+          ini:
+            "xdebug.mode": coverage
+
       dependencies:
         override:
           - composer self-update
