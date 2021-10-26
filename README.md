@@ -3,6 +3,8 @@
 [![Latest Stable Version](https://poser.pugx.org/vjik/yii2-psr-container-proxy/v/stable.png)](https://packagist.org/packages/vjik/yii2-psr-container-proxy)
 [![Total Downloads](https://poser.pugx.org/vjik/yii2-psr-container-proxy/downloads.png)](https://packagist.org/packages/vjik/yii2-psr-container-proxy)
 [![Build status](https://github.com/vjik/yii2-psr-container-proxy/workflows/build/badge.svg)](https://github.com/vjik/yii2-psr-container-proxy/actions?query=workflow%3Abuild)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vjik/yii2-psr-container-proxy/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/vjik/yii2-psr-container-proxy/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/vjik/yii2-psr-container-proxy/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/vjik/yii2-psr-container-proxy/?branch=master)
 
 The package provide PSR-11 compatible container proxy for Yii2.
 
