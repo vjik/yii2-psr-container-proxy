@@ -18,7 +18,7 @@ The package provide PSR-11 compatible container proxy for Yii2.
 The preferred way to install this extension is through [composer](https://getcomposer.org/download/):
 
 ```shell
-composer require vjik/yii2-psr-container-proxy --prefer-dist
+composer require vjik/yii2-psr-container-proxy
 ```
 
 ## General usage
