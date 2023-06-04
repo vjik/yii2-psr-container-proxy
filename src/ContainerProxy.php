@@ -52,11 +52,11 @@ class ContainerProxy implements ContainerInterface
     /**
      * Returns a value indicating whether the container has the definition of the specified name.
      *
-     * @param string $id class name, interface name or alias name
+     * @param string $id The class name, interface name or alias name.
      *
-     * @return bool whether the container is able to provide instance of class specified
+     * @return bool Whether the container is able to provide instance of class specified.
      */
-    public function has($id)
+    public function has($id): bool
     {
         return $this->container->hasSingleton($id) ||
             $this->container->has($id) ||
