@@ -1,6 +1,6 @@
 # Yii2 Container Proxy (PSR-11) Change Log
 
-## 2.1.0 — under development
+## 2.1.0 — 04.06.2023
 
 - Add `psr/container` of version `^2.0` support. 
 
