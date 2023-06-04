@@ -1,4 +1,4 @@
-# Yii 2 Container Proxy (PSR-11)
+# Yii2 Container Proxy (PSR-11)
 
 [![Latest Stable Version](https://poser.pugx.org/vjik/yii2-psr-container-proxy/v/stable.png)](https://packagist.org/packages/vjik/yii2-psr-container-proxy)
 [![Total Downloads](https://poser.pugx.org/vjik/yii2-psr-container-proxy/downloads.png)](https://packagist.org/packages/vjik/yii2-psr-container-proxy)
@@ -39,5 +39,5 @@ The package is tested with [PHPUnit](https://phpunit.de/). To run tests:
 
 ## License
 
-The Yii 2 Container Proxy (PSR-11) is free software. It is released under the terms of the BSD License.
+The Yii2 Container Proxy (PSR-11) is free software. It is released under the terms of the BSD License.
 Please see [`LICENSE`](./LICENSE.md) for more information.
