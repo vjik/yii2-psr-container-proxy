@@ -1,15 +1,20 @@
-on:
-  - pull_request
-  - push
-
 name: build
+
+on:
+  pull_request:
+  push:
+    branches: [ 'master' ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   tests:
     name: PHP ${{ matrix.php }}-${{ matrix.os }}
-
-    env:
-      key: cache-v1
 
     runs-on: ${{ matrix.os }}
 
@@ -18,7 +23,6 @@ jobs:
         os:
           - ubuntu-latest
           - windows-latest
-
         php:
           - "7.2"
           - "7.3"
@@ -33,36 +37,25 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - name: Install PHP
-        uses: shivammathur/setup-php@v2
+      - name: Install PHP with extensions
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2
+        env:
+          update: true
         with:
           php-version: ${{ matrix.php }}
           ini-values: date.timezone='UTC'
-          coverage: pcov
+          coverage: none
           tools: composer:v2
 
-      - name: Determine composer cache directory on Linux
-        if: matrix.os == 'ubuntu-latest'
-        run: echo "COMPOSER_CACHE_DIR=$(composer config cache-dir)" >> $GITHUB_ENV
-
-      - name: Determine composer cache directory on Windows
-        if: matrix.os == 'windows-latest'
-        run: echo "COMPOSER_CACHE_DIR=~\AppData\Local\Composer" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-
-      - name: Cache dependencies installed with composer
-        uses: actions/cache@v2
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
         with:
-          path: ${{ env.COMPOSER_CACHE_DIR }}
-          key: php${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: |
-            php${{ matrix.php }}-composer-
-      - name: Update composer
-        run: composer self-update
+          dependency-versions: highest
+          composer-options: --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
 
-      - name: Install dependencies with composer
-        run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
-
-      - name: Run tests with phpunit
+      - name: Run tests with PHPUnit
         run: vendor/bin/phpunit --colors=always
