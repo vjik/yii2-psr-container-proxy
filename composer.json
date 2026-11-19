@@ -22,7 +22,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": "^7.2|^8.0",
+        "php": "7.2 - 8.6",
         "yiisoft/yii2": "~2.0.40",
         "psr/container": "^1.0|^2.0"
     },

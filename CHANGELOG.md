@@ -1,5 +1,9 @@
 # Yii2 Container Proxy (PSR-11) Change Log
 
+## Under development
+
+- Change PHP constraint in composer.json to `7.2 - 8.6`.
+
 ## 2.1.0 — 04.06.2023
 
 - Add `psr/container` of version `^2.0` support. 
