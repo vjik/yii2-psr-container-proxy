@@ -16,6 +16,11 @@ jobs:
   tests:
     name: PHP ${{ matrix.php }}-${{ matrix.os }}
 
+    env:
+      # Versions of yiisoft/yii2 that support PHP < 7.4 are all affected by security
+      # advisories; allow the solver to fall back to them for old PHP matrix legs.
+      COMPOSER_POLICY_ADVISORIES_BLOCK: 'false'
+
     runs-on: ${{ matrix.os }}
 
     strategy:
